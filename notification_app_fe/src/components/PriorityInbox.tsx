@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { Notification } from "../api/notificationApi";
 import NotificationCard from "./NotificationCard";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 interface PriorityInboxProps {
   priorityNotifications: Notification[];

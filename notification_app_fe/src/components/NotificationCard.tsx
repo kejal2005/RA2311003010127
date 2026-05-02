@@ -9,7 +9,7 @@ import {
   Badge,
 } from "@mui/material";
 import { Notification } from "../api/notificationApi";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 interface NotificationCardProps {
   notification: Notification;

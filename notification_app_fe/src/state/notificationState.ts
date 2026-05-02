@@ -1,4 +1,4 @@
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 const VIEWED_NOTIFICATIONS_KEY = "viewed_notifications";
 

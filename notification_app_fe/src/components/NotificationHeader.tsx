@@ -11,7 +11,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 interface NotificationHeaderProps {
   activeFilter: "All" | "Placement" | "Result" | "Event";

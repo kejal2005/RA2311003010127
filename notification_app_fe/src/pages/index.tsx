@@ -5,7 +5,7 @@ import { Box, Container } from "@mui/material";
 import NotificationHeader from "../components/NotificationHeader";
 import NotificationList from "../components/NotificationList";
 import { useNotifications } from "../hooks/useNotifications";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 /**
  * All Notifications Page

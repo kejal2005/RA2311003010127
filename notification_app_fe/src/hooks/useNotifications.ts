@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 import { Notification } from "../api/notificationApi";
 import { fetchAllNotifications, FetchNotificationsParams } from "../api/notificationApi";
 import {

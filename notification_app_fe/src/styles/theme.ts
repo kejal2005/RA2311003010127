@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 /**
  * Custom Material UI theme for the notification app

@@ -19,15 +19,13 @@
     "@mui/material": "^5.14.0",
     "@mui/icons-material": "^5.14.0",
     "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "logging-middleware": "file:../logging_middleware"
+    "@emotion/styled": "^11.11.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/node": "^20.0.0",
-    "@next/eslint-config": "^14.0.0",
     "eslint": "^8.50.0",
     "eslint-config-next": "^14.0.0"
   },

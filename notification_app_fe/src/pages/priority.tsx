@@ -5,7 +5,7 @@ import { Box, Container, Button } from "@mui/material";
 import { useRouter } from "next/router";
 import PriorityInbox from "../components/PriorityInbox";
 import { usePriorityNotifications } from "../hooks/useNotifications";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 /**
  * Priority Inbox Page

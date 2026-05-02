@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Box, Alert, CircularProgress, Container } from "@mui/material";
 import { Notification } from "../api/notificationApi";
 import NotificationCard from "./NotificationCard";
-import Log from "logging-middleware";
+import Log from "../lib/Log";
 
 interface NotificationListProps {
   notifications: Notification[];
