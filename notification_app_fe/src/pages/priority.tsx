@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Box, Container, Button } from "@mui/material";
 import { useRouter } from "next/router";
@@ -130,12 +129,4 @@ const PriorityPage: React.FC = () => {
 
 export default PriorityPage;
 
-/**
- * Server-side data fetching (optional)
- */
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  return {
-    props: {},
-    revalidate: 60,
-  };
-};
+

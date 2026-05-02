@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Box, Container } from "@mui/material";
 import NotificationHeader from "../components/NotificationHeader";
@@ -107,13 +106,4 @@ const AllNotificationsPage: React.FC = () => {
 
 export default AllNotificationsPage;
 
-/**
- * Server-side data fetching (optional)
- * Could be used for API prefetching
- */
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  return {
-    props: {},
-    revalidate: 60, // ISR - revalidate every 60 seconds
-  };
-};
+

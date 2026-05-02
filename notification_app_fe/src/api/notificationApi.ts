@@ -2,7 +2,7 @@ import Log from "../lib/Log";
 import {
   Notification,
   getTopNPriorityNotifications,
-} from "./priorityEngine";
+} from "../utils/priorityEngine";
 
 /**
  * API parameters for fetching notifications
