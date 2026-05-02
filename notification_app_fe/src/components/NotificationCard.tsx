@@ -7,6 +7,8 @@ import {
   Button,
   Box,
   Badge,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { Notification } from "../api/notificationApi";
 import Log from "../lib/Log";
@@ -67,6 +69,7 @@ function formatRelativeTime(timestamp: string): string {
 /**
  * NotificationCard Component
  * Displays a single notification with type badge, message, timestamp, and action buttons
+ * Fully responsive: stacks vertically on mobile, horizontal on desktop
  */
 const NotificationCard: React.FC<NotificationCardProps> = ({
   notification,
@@ -74,15 +77,19 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
   onMarkViewed,
   rankNumber,
 }) => {
-  // Log on mount
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // Log on mount with responsive info
   useEffect(() => {
+    const viewType = isMobile ? "mobile" : "desktop";
     Log(
       "frontend",
       "info",
       "component",
-      `NotificationCard rendered - ID: ${notification.ID}, Type: ${notification.Type}, isNew: ${isNew}, Rank: ${rankNumber || "N/A"}`
+      `NotificationCard rendered in ${viewType} view - ID: ${notification.ID}, Type: ${notification.Type}, isNew: ${isNew}, Rank: ${rankNumber || "N/A"}`
     );
-  }, []);
+  }, [isMobile]);
 
   const handleMarkViewed = () => {
     Log(
@@ -108,23 +115,35 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
         },
       }}
     >
-      <CardContent>
+      <CardContent sx={{ padding: { xs: 1.5, md: 2 } }}>
+        {/* Header Section - Type Chip and Badge (Responsive) */}
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            alignItems: "flex-start",
-            mb: 1.5,
+            alignItems: { xs: "flex-start", md: "center" },
+            mb: { xs: 1, md: 1.5 },
+            gap: { xs: 1, md: 0 },
           }}
         >
-          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 1,
+              alignItems: "center",
+              flexWrap: "wrap",
+              width: { xs: "100%", md: "auto" },
+            }}
+          >
             {rankNumber && (
               <Typography
-                variant="h6"
+                variant={isMobile ? "body2" : "h6"}
                 sx={{
                   fontWeight: 700,
                   color: "#1976d2",
                   minWidth: "30px",
+                  fontSize: { xs: "0.875rem", md: "1.25rem" },
                 }}
               >
                 #{rankNumber}
@@ -133,7 +152,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
             <Chip
               label={notification.Type}
               color={typeColor}
-              size="small"
+              size={isMobile ? "small" : "medium"}
               variant="filled"
               sx={{ fontWeight: 600 }}
             />
@@ -145,9 +164,9 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
                   "& .MuiBadge-badge": {
                     backgroundColor: "#1976d2",
                     color: "#fff",
-                    fontSize: "0.7rem",
+                    fontSize: { xs: "0.65rem", md: "0.7rem" },
                     fontWeight: 700,
-                    padding: "2px 6px",
+                    padding: { xs: "1px 4px", md: "2px 6px" },
                     borderRadius: "4px",
                   },
                 }}
@@ -156,29 +175,37 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
           </Box>
         </Box>
 
+        {/* Message Section (Responsive) */}
         <Typography
           variant="body1"
           sx={{
-            mb: 1.5,
+            mb: { xs: 1, md: 1.5 },
             color: "#212121",
             lineHeight: 1.6,
+            fontSize: { xs: "0.95rem", md: "1rem" },
+            wordBreak: "break-word",
           }}
         >
           {notification.Message}
         </Typography>
 
+        {/* Footer Section - Timestamp and Button (Responsive) */}
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: { xs: "flex-start", md: "center" },
+            gap: { xs: 1.5, md: 0 },
           }}
         >
           <Typography
             variant="body2"
             sx={{
               color: "#757575",
-              fontSize: "0.85rem",
+              fontSize: { xs: "0.8rem", md: "0.85rem" },
+              whiteSpace: "nowrap",
+              order: { xs: 2, md: 1 },
             }}
           >
             {formatRelativeTime(notification.Timestamp)}
@@ -186,7 +213,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
 
           {isNew && (
             <Button
-              size="small"
+              size={isMobile ? "small" : "medium"}
               variant="outlined"
               onClick={handleMarkViewed}
               sx={{
@@ -194,6 +221,10 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
                 fontWeight: 500,
                 borderColor: "#1976d2",
                 color: "#1976d2",
+                width: { xs: "100%", md: "auto" },
+                fontSize: { xs: "0.8rem", md: "0.875rem" },
+                padding: { xs: "6px 12px", md: "8px 16px" },
+                order: { xs: 1, md: 2 },
                 "&:hover": {
                   backgroundColor: "#f0f7ff",
                   borderColor: "#1565c0",
