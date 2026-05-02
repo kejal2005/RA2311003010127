@@ -31,8 +31,6 @@ export interface NotificationsResponse {
 export async function fetchAllNotifications(
   params?: FetchNotificationsParams
 ): Promise<Notification[]> {
-  const token = process.env.NEXT_PUBLIC_AUTH_TOKEN;
-
   Log(
     "frontend",
     "debug",
@@ -49,13 +47,13 @@ export async function fetchAllNotifications(
       queryParams.append("notification_type", params.notification_type);
 
     const queryString = queryParams.toString();
-    const url = `http://20.207.122.201/evaluation-service/notifications${queryString ? `?${queryString}` : ""}`;
+    // Use local Next.js API proxy instead of external API to avoid CORS issues
+    const url = `/api/notifications${queryString ? `?${queryString}` : ""}`;
 
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
 

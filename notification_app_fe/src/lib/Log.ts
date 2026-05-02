@@ -57,14 +57,13 @@ export async function Log(
       message,
     };
 
-    // Make POST request to logging endpoint
+    // Make POST request to local logging API proxy (avoids CORS issues)
     const response = await fetch(
-      "http://20.207.122.201/evaluation-service/logs",
+      "/api/logs",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(logEntry),
       }
