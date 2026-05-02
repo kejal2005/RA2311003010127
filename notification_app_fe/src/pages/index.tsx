@@ -168,6 +168,18 @@ const AllNotificationsPage: React.FC = () => {
     return !viewedIds.has(id);
   };
 
+  // Handle retry button click in error state
+  const handleRetry = () => {
+    Log(
+      "frontend",
+      "info",
+      "page",
+      "User clicked Retry button - fetching notifications again"
+    );
+    setCurrentPage(1);
+    setError(null);
+  };
+
   // Display error if there is one
   if (error && notifications.length === 0) {
     return (
@@ -217,6 +229,8 @@ const AllNotificationsPage: React.FC = () => {
             isLoading={loading}
             onMarkViewed={handleMarkViewed}
             isNew={isNew}
+            error={error}
+            onRetry={handleRetry}
           />
 
           {/* Pagination Component */}
