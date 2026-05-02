@@ -14,11 +14,6 @@ const nextConfig = {
     NEXT_PUBLIC_NOTIFICATION_API: process.env.NEXT_PUBLIC_NOTIFICATION_API || "http://20.207.122.201/evaluation-service/notifications",
   },
 
-  // TypeScript support
-  typescript: {
-    strictNullChecks: true,
-  },
-
   // Image optimization (optional, not used in this app but good for production)
   images: {
     unoptimized: true,
