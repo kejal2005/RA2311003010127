@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# Production build
+dist/
+build/
+out/
+.next/
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# OS
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary
+.cache/
+.tmp/
+temp/
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Lock files (optional - comment out if you want to commit them)
+# package-lock.json
+# yarn.lock
